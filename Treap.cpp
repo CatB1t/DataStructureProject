@@ -188,7 +188,7 @@ TreapNode *Treap::RRRotation(TreapNode *n) {
 void Treap::inOrder(TreapNode *node) {
     if(node != 0){
         inOrder(node -> left);
-        
+        cout << *(node -> user);
         inOrder(node -> right);
     }
 }
