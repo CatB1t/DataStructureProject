@@ -184,3 +184,11 @@ TreapNode *Treap::RRRotation(TreapNode *n) {
     rotNode -> left = tempNode;
     return rotNode;
 }
+
+void Treap::inOrder(TreapNode *node) {
+    if(node != 0){
+        inOrder(node -> left);
+        
+        inOrder(node -> right);
+    }
+}
