@@ -142,3 +142,45 @@ TreapNode *Treap::getSuccessor(TreapNode *p)
         p = p->left;
     return p;
 }
+
+TreapNode *Treap::LLRotation(TreapNode *n) {
+    struct TreapNode *tempNode, *rotNode;
+    tempNode = n;
+    rotNode = tempNode -> left;
+    tempNode -> left = rotNode -> right;
+    rotNode -> right = tempNode;
+    return rotNode;
+}
+
+TreapNode *Treap::LRRotation(TreapNode *n) {
+    struct TreapNode *tempNode, *rotNode2, *rotNode;
+    tempNode = n;
+    rotNode = tempNode -> left;
+    rotNode2 = tempNode -> left -> right;
+    tempNode -> left = rotNode2 -> right;
+    rotNode -> right = rotNode2 -> left;
+    rotNode2 -> right = tempNode;
+    rotNode2 -> left = rotNode;
+    return rotNode2;
+}
+
+TreapNode *Treap::RLRotation(TreapNode *n) {
+    struct TreapNode *tempNode, *rotNode2, *rotNode;
+    tempNode = n;
+    rotNode = tempNode -> right;
+    rotNode2 = tempNode -> right -> left;
+    tempNode -> right = rotNode2 -> left;
+    rotNode -> left = rotNode2 -> right;
+    rotNode2 -> left = tempNode;
+    rotNode2 -> right = rotNode;
+    return rotNode2;
+}
+
+TreapNode *Treap::RRRotation(TreapNode *n) {
+    struct TreapNode *tempNode, *rotNode;
+    tempNode = n;
+    rotNode = tempNode -> right;
+    tempNode -> right = rotNode -> left;
+    rotNode -> left = tempNode;
+    return rotNode;
+}
