@@ -10,4 +10,4 @@ add_executable(DataStructureProject
         Treap.cpp
         Treap.h
         User.cpp
-        User.h)
+        User.h UserLinkedList.cpp UserLinkedList.h)
