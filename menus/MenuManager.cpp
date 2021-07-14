@@ -1,0 +1,50 @@
+#include "MenuManager.h"
+#include "MainMenu.h"
+#include "IMenu.h"
+
+// Create a default MainMenu and execute it 
+MenuManager::MenuManager()
+{
+	ExecuteMenu(new MainMenu());
+}
+
+// Start displaying the current menus
+bool MenuManager::Run()
+{
+	while(!_currentMenus.empty())
+	{
+		// Get the top menu
+		IMenu* top = _currentMenus.top();
+		
+		// Show it
+		top->Show();
+		
+		// wait for input
+		if (top->Handle())
+		{
+			_currentMenus.pop(); // TODO Not a proper way to pop the current menu
+			break;
+		}
+	}
+	return true;
+}
+
+
+// Add a menu to the stack to be executed
+void MenuManager::ExecuteMenu(IMenu* menu) 
+{
+	_currentMenus.push(menu);
+}
+
+// Skip a current instance of a menu 
+bool MenuManager::SkipMenu(IMenu* menu)
+{
+	return false;
+}
+
+// Skip the current menu that is displaying right now 
+bool MenuManager::SkipCurrentMenu()
+{
+	return false;
+}
+

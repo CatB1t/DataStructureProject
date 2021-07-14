@@ -38,6 +38,7 @@ int Treap::getBalanceFactor(TreapNode *n)
     {
         return -n->right->height;
     }
+    return 0;
 }
 
 
