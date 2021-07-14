@@ -16,6 +16,9 @@ class User
         string email;
         Treap *friendsList;
     public:
+        User(){
+            username="",fullname="",email="";
+        }
         User(string username, string fullname, string email)
         {
             this -> username = username;
