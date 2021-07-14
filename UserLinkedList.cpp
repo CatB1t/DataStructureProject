@@ -15,7 +15,7 @@ void UserLinkedList::insertAtHead(User data) {
     head = newNode;
 }
 
-void UserLinkedList::insertAtTail(User data) { 
+void UserLinkedList::insertAtTail(User data) {
     Node* newNode = new Node(data);
     newNode->info = data;
 
