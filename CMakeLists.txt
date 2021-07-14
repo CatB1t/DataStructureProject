@@ -10,4 +10,4 @@ add_executable(DataStructureProject
         Treap.cpp
         Treap.h
         User.cpp
-        User.h)
+        User.h "menus/MenuManager.cpp" "menus/MenuManager.h" "menus/IMenu.h")
