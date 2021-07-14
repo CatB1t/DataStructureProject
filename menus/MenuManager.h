@@ -1,16 +1,17 @@
 #pragma once
-
 #include "stack"
 
 class IMenu;
 class MenuManager
 {
+public:
+	static MenuManager* MenuManager_Instance;
 private:
-	std::stack<IMenu*> _currentMenus;
+	static std::stack<IMenu*> _currentMenus;
 public:
 	MenuManager(); 
-	bool Run();
-	void ExecuteMenu(IMenu* menu);
-	bool SkipMenu(IMenu* menu);
-	bool SkipCurrentMenu();
+	static bool Run();
+	static void ExecuteMenu(IMenu* menu);
+	static bool SkipMenu(IMenu* menu);
+	static bool SkipCurrentMenu();
 };

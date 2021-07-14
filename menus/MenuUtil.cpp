@@ -5,7 +5,7 @@ namespace MenuUtil
 {
 	int GetValidIntInput(int min, int max)
 	{
-		std::cout << "\nPlease enter your choice: ";
+		std::cout << "\nPlease enter your choice:";
 		int tmp;
 		std::cin >> tmp;
 		while (tmp > max && tmp < min)
@@ -14,5 +14,10 @@ namespace MenuUtil
 			std::cin >> tmp;
 		}
 		return tmp;
+	}
+
+	void Print(const char* output)
+	{
+		std::cout << output;
 	}
 }

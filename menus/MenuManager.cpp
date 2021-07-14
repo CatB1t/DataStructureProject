@@ -2,9 +2,13 @@
 #include "MainMenu.h"
 #include "IMenu.h"
 
+MenuManager* MenuManager::MenuManager_Instance;
+std::stack<IMenu*> MenuManager::_currentMenus;
 // Create a default MainMenu and execute it 
 MenuManager::MenuManager()
 {
+	if(!MenuManager_Instance)
+		MenuManager_Instance = this;
 	ExecuteMenu(new MainMenu());
 }
 
@@ -15,7 +19,7 @@ bool MenuManager::Run()
 	{
 		// Get the top menu
 		IMenu* top = _currentMenus.top();
-		
+
 		// Show it
 		top->Show();
 		
@@ -23,7 +27,6 @@ bool MenuManager::Run()
 		if (top->Handle())
 		{
 			_currentMenus.pop(); // TODO Not a proper way to pop the current menu
-			break;
 		}
 	}
 	return true;
