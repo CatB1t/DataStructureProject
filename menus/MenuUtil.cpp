@@ -1,12 +1,11 @@
-#include "Menu.h"
+#include "MenuUtil.h"
 #include <iostream>
 
-namespace Menu
+namespace MenuUtil
 {
-	void Foo()
+	int GetValidIntInput(int min, int max)
 	{
-		/*
-		std::cout << "Please enter your choice: ";
+		std::cout << "\nPlease enter your choice: ";
 		int tmp;
 		std::cin >> tmp;
 		while (tmp > max && tmp < min)
@@ -15,7 +14,5 @@ namespace Menu
 			std::cin >> tmp;
 		}
 		return tmp;
-		*/
-		std::cout << "Hello";
 	}
 }

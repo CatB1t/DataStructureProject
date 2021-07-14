@@ -1,12 +1,11 @@
-#include "Menus/Menu.h"
 #include <iostream>
+#include "menus/MenuManager.h"
 
 using namespace std;
 
 int main()
 {
-	//MenuManager menuManager;
-	//menuManager.Run();
-	Menu::Foo();
+	MenuManager menuManager;
+	menuManager.Run();
     return 0;
 }
