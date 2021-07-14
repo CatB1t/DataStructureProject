@@ -38,6 +38,7 @@ int Treap::getBalanceFactor(TreapNode *n)
     {
         return -n->right->height;
     }
+    return 0;
 }
 
 
@@ -188,7 +189,7 @@ TreapNode *Treap::RRRotation(TreapNode *n) {
 void Treap::inOrder(TreapNode *node) {
     if(node != 0){
         inOrder(node -> left);
-        
+        cout << *(node -> user);
         inOrder(node -> right);
     }
 }
