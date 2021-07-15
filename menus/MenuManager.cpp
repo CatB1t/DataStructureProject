@@ -4,6 +4,7 @@
 
 MenuManager* MenuManager::MenuManager_Instance;
 std::stack<IMenu*> MenuManager::_currentMenus;
+
 // Create a default MainMenu and execute it 
 MenuManager::MenuManager()
 {
@@ -32,22 +33,8 @@ bool MenuManager::Run()
 	return true;
 }
 
-
 // Add a menu to the stack to be executed
 void MenuManager::ExecuteMenu(IMenu* menu) 
 {
 	_currentMenus.push(menu);
 }
-
-// Skip a current instance of a menu 
-bool MenuManager::SkipMenu(IMenu* menu)
-{
-	return false;
-}
-
-// Skip the current menu that is displaying right now 
-bool MenuManager::SkipCurrentMenu()
-{
-	return false;
-}
-

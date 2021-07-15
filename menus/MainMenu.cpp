@@ -3,6 +3,7 @@
 #include "MenuManager.h"
 #include "MenuUtil.h"
 #include "UserMenu.h"
+#include "User.h"
 
 void MainMenu::Show()
 {
@@ -14,7 +15,7 @@ bool MainMenu::Handle()
 	switch (MenuUtil::GetValidIntInput(1, 2))
 	{
 		case 1: // Login
-			MenuManager::MenuManager_Instance->ExecuteMenu(new UserMenu());
+			Login();
 			return false;
 		case 2: // Exit
 			return true;
@@ -22,4 +23,11 @@ bool MainMenu::Handle()
 			std::cout << "Unknown error.";
 			return false;
 	}
+}
+
+void MainMenu::Login() {
+    MenuUtil::Print("Enter your name fag:");
+    User* currentUser = new User(MenuUtil::GetValidStringInput(), "no", "nono");
+    // If valid login, Run user menu
+    MenuManager::MenuManager_Instance->ExecuteMenu(new UserMenu(currentUser));
 }

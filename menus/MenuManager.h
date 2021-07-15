@@ -12,6 +12,4 @@ public:
 	MenuManager(); 
 	static bool Run();
 	static void ExecuteMenu(IMenu* menu);
-	static bool SkipMenu(IMenu* menu);
-	static bool SkipCurrentMenu();
 };

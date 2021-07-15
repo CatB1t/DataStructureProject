@@ -8,13 +8,23 @@ namespace MenuUtil
 		std::cout << "\nPlease enter your choice:";
 		int tmp;
 		std::cin >> tmp;
-		while (tmp > max && tmp < min)
+		while (tmp > max || tmp < min)
 		{
 			std::cout << "Not a valid input, please try again: ";
 			std::cin >> tmp;
 		}
 		return tmp;
 	}
+
+	std::string GetValidStringInput()
+    {
+	    std::string tmp = "";
+	    while(tmp.empty())
+        {
+	        std::getline(std::cin, tmp);
+        }
+	    return tmp;
+    }
 
 	void Print(const char* output)
 	{
