@@ -26,7 +26,7 @@ bool MainMenu::Handle()
 }
 
 void MainMenu::Login() {
-    MenuUtil::Print("Enter your name fag:");
+    MenuUtil::Print("Enter your name: ");
     User* currentUser = new User(MenuUtil::GetValidStringInput(), "no", "nono");
     // If valid login, Run user menu
     MenuManager::MenuManager_Instance->ExecuteMenu(new UserMenu(currentUser));

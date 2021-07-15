@@ -193,3 +193,17 @@ void Treap::inOrder(TreapNode *node) {
         inOrder(node -> right);
     }
 }
+
+User *Treap::find(string username) {
+    TreapNode *current = root;
+    while(current != 0) {
+        if(username == current -> username)
+            return current -> user;
+        else if(username < current -> username)
+            current = current -> left;
+        else
+            current = current -> right;
+    }
+    //if not found, returns null
+    return 0;
+}
