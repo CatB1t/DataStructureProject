@@ -37,7 +37,6 @@ UserManager::UserManager()
 
     ifstream tmp;
     tmp.open("../all-users-relations.in");
-    std::queue<std::string> users;
 
     while(!tmp.eof())
     {
@@ -48,19 +47,8 @@ UserManager::UserManager()
         tmp >> tmpFirstUser;
         getline(tmp, tmpSecondUser, ',');
 
-        users.push(tmpFirstUser);
-        users.push(tmpSecondUser);
-    }
-
-
-    while(!users.empty()) // we are assuming there's always pair of users
-    {
-        // add each user to the other
-        // Search both users
-        User* firstUser = _userList.search(users.front());
-        users.pop();
-        User* secondUser = _userList.search(users.front());
-        users.pop();
+        User* firstUser = _userList.search(tmpFirstUser);
+        User* secondUser = _userList.search(tmpSecondUser);
 
         if(firstUser && secondUser)
         {
