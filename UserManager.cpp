@@ -5,7 +5,6 @@
 #include "UserManager.h"
 #include <string>
 #include <algorithm>
-#include <queue>
 
 using namespace std;
 UserManager* UserManager::UserManager_Instance;
@@ -35,6 +34,11 @@ UserManager::UserManager()
     //_userList.printList();
     nameFileout.close();
 
+    ReadInputForRelations();
+}
+
+void UserManager::ReadInputForRelations()
+{
     ifstream tmp;
     tmp.open("../all-users-relations.in");
 
@@ -56,6 +60,8 @@ UserManager::UserManager()
             secondUser->AddFriend(*firstUser);
         }
     }
+
+    tmp.close();
 }
 
 User* UserManager::Login(const std::string& name)

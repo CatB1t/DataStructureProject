@@ -14,6 +14,7 @@
 class UserManager {
 private:
     UserLinkedList _userList;
+    void ReadInputForRelations();
 public:
     static UserManager* UserManager_Instance;
 public:
