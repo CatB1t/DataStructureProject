@@ -8,9 +8,11 @@ namespace MenuUtil
 		std::cout << "\nPlease enter your choice:";
 		int tmp;
 		std::cin >> tmp;
-		while (tmp > max || tmp < min) // TODO Fix input not valid
+		while (!std::cin >> tmp || tmp > max || tmp < min) 
 		{
-			std::cout << "Not a valid input, please try again: ";
+			std::cout << "Not a valid input, please try again:";
+            std::cin.clear();
+            std::cin.ignore(1000,'\n');
 			std::cin >> tmp;
 		}
 		return tmp;
