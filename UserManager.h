@@ -20,6 +20,7 @@ public:
 public:
     UserManager();
     User* Login(const std::string& name);
+    User* Search(const std::string& name);
 };
 
 

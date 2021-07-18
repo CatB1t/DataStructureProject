@@ -16,6 +16,7 @@ class User
     public:
         User();
         User(string username, string fullname, string email);
+
         string getUsername(){ return username; }
         string getFullname(){ return fullname; }
         string getEmail(){ return email; }
@@ -25,6 +26,9 @@ class User
         void setEmail(string email){ this -> email = email; }
 
         bool AddFriend(User& user);
+        bool RemoveFriend(User& user);
+        void ListFriends();
+        bool IsAFriend(User& user);
 
         friend ostream& operator<<(ostream& os, const User& user)
         {
@@ -33,6 +37,10 @@ class User
             << "Email: " << user.email << endl;
 
             return os;
+        }
+
+        std::string toString() {
+            return "Fullname: " + fullname + "\nUsername: " + username + "\nEmail: " + email + "\n";
         }
 };
 

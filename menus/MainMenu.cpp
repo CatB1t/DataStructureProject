@@ -21,15 +21,16 @@ bool MainMenu::Handle()
 		case 2: // Exit
 			return true;
 		default:
-			std::cout << "Unknown error.";
+			MenuUtil::Print("Unknown error.\n");
 			return false;
 	}
 }
 
 void MainMenu::Login() {
-    MenuUtil::Print("Enter your name: ");
-    //User* currentUser = new User(MenuUtil::GetValidStringInput(), "no", "nono");
+    MenuUtil::Print("Enter your name:\n");
     User* currentUser = UserManager::UserManager_Instance->Login(MenuUtil::GetValidStringInput());
-    // If valid login, Run user menu
-    MenuManager::MenuManager_Instance->ExecuteMenu(new UserMenu(currentUser));
+    if(currentUser)
+        MenuManager::MenuManager_Instance->ExecuteMenu(new UserMenu(currentUser));
+    else
+        MenuUtil::Print("Not a valid username.\n");
 }

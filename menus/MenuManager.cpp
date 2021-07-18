@@ -18,13 +18,8 @@ bool MenuManager::Run()
 {
 	while(!_currentMenus.empty())
 	{
-		// Get the top menu
 		IMenu* top = _currentMenus.top();
-
-		// Show it
 		top->Show();
-		
-		// wait for input
 		if (top->Handle())
 		{
 			_currentMenus.pop(); // TODO Not a proper way to pop the current menu

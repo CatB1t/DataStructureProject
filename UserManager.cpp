@@ -12,6 +12,7 @@ UserManager::UserManager()
 {
     if(!UserManager_Instance)
         UserManager_Instance = this;
+
     ifstream nameFileout;
     nameFileout.open(R"(../all-users.in)"); // TODO handle if file is not found
     while(!nameFileout.eof()){
@@ -31,9 +32,8 @@ UserManager::UserManager()
         }
         _userList.insertAtHead(user);
     };
-    //_userList.printList();
-    nameFileout.close();
 
+    nameFileout.close();
     ReadInputForRelations();
 }
 
@@ -44,8 +44,6 @@ void UserManager::ReadInputForRelations()
 
     while(!tmp.eof())
     {
-        // Get each line
-        string line;
         string tmpFirstUser,tmpSecondUser;
 
         tmp >> tmpFirstUser;
@@ -65,6 +63,11 @@ void UserManager::ReadInputForRelations()
 }
 
 User* UserManager::Login(const std::string& name)
+{
+    return _userList.search(name);
+}
+
+User* UserManager::Search(const std::string& name)
 {
     return _userList.search(name);
 }

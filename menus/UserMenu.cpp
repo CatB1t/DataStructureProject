@@ -1,6 +1,7 @@
 #include "UserMenu.h"
 #include "User.h"
 #include "MenuUtil.h"
+#include "UserManager.h"
 #include <iostream>
 
 UserMenu::UserMenu(User* user) {
@@ -43,19 +44,48 @@ bool UserMenu::Handle() {
 }
 
 void UserMenu::ListAllFriends() {
-
+    _currentUser->ListFriends();
 }
 
 void UserMenu::SearchByUsername() {
-
+    MenuUtil::Print("Enter username:\n");
+    User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
+    if(!user)
+    {
+        MenuUtil::Print("Not a valid user.\n");
+        return;
+    }
+    MenuUtil::Print(user->toString());
 }
 
 void UserMenu::AddFriend() {
+    MenuUtil::Print("Enter username:\n");
+    User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
+    if(!user)
+    {
+        MenuUtil::Print("Not a valid user.\n");
+        return;
+    }
 
+    if(_currentUser->IsAFriend(*user))
+    {
+        MenuUtil::Print("This user is already a friend.\n");
+        return;
+    }
+
+    _currentUser->AddFriend(*user);
 }
 
 void UserMenu::RemoveFriend() {
-
+    MenuUtil::Print("Enter username:\n");
+    User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
+    if(!user)
+    {
+        MenuUtil::Print("Not a valid user.\n");
+        return;
+    }
+    MenuUtil::Print("Friend removed successfully.\n");
+    _currentUser->RemoveFriend(*user);
 }
 
 void UserMenu::ShowPeopleYouMayKnow() {

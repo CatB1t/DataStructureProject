@@ -14,14 +14,10 @@ class UserLinkedList {
     struct Node {
         User info;
         Node* next;
-
-
          Node(User data){
             this->info=data;
             this->next = nullptr;
         }
-
-
     };
 
 private:
@@ -32,12 +28,8 @@ public:
     UserLinkedList();
     void insertAtHead(User data);
     void insertAtTail(User data);
-
     User*  search(string username);
     void printList();
-
-
-
 };
 
 

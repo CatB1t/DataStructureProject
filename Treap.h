@@ -39,7 +39,11 @@ class Treap
         void add(string username, User *user){ insert(_root, username, user); };
         void remove(string username){ remove(_root, username); };
         User *find(string username);
-        void printInOrder() {inOrder(_root); };
+        void printInOrder() {
+            if(!_root)
+                std::cout << "There's no friends in your friend list\n";
+            inOrder(_root);
+        };
 };
 
 #endif

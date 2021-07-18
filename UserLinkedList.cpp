@@ -37,6 +37,10 @@ User* UserLinkedList::search(string data) {
             break;
         current = current->next;
     }
+
+    if(!current)
+        return 0;
+
     return &current->info;
 }
 

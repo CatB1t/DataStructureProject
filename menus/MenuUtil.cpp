@@ -8,7 +8,7 @@ namespace MenuUtil
 		std::cout << "\nPlease enter your choice:";
 		int tmp;
 		std::cin >> tmp;
-		while (tmp > max || tmp < min)
+		while (tmp > max || tmp < min) // TODO Fix input not valid
 		{
 			std::cout << "Not a valid input, please try again: ";
 			std::cin >> tmp;
@@ -30,4 +30,9 @@ namespace MenuUtil
 	{
 		std::cout << output;
 	}
+
+    void Print(std::basic_string<char> output)
+    {
+        std::cout << output;
+    }
 }
