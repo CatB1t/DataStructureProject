@@ -33,7 +33,7 @@ public:
     void insertAtHead(User data);
     void insertAtTail(User data);
 
-    bool search(string username);
+    User*  search(string username);
     void printList();
 
 

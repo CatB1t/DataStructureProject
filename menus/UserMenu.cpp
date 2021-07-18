@@ -6,7 +6,7 @@
 UserMenu::UserMenu(User* user) {
     if(user)
         _currentUser = user;
-    std::cout << _currentUser->getusername() << std::endl; // TODO Cleanup
+    std::cout << _currentUser->getUsername() << std::endl; // TODO Cleanup
 }
 
 void UserMenu::Show() {

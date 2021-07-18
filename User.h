@@ -1,12 +1,10 @@
 #ifndef USER_H
 #define USER_H
 
-
 #include <iostream>
-#include "Treap.h"
-using namespace std;
 
-class Treap;  //forward definition
+using namespace std;
+class Treap;
 
 class User
 {
@@ -14,26 +12,19 @@ class User
         string username;
         string fullname;
         string email;
-        Treap *friendsList;
+        Treap* friendsList;
     public:
-        User(){
-            username="",fullname="",email="";
-        }
-        User(string username, string fullname, string email)
-        {
-            this -> username = username;
-            this -> fullname = fullname;
-            this -> email = email;
-            this -> friendsList = 0;
-        }
-
-        string getusername(){ return username; }
-        string getfullname(){ return fullname; }
+        User();
+        User(string username, string fullname, string email);
+        string getUsername(){ return username; }
+        string getFullname(){ return fullname; }
         string getEmail(){ return email; }
 
-        void setusername(string username){ this -> username = username; }
-        void setfullname(string fullname){ this -> fullname = fullname; }
+        void setUsername(string username){ this -> username = username; }
+        void setFullname(string fullname){ this -> fullname = fullname; }
         void setEmail(string email){ this -> email = email; }
+
+        bool AddFriend(User& user);
 
         friend ostream& operator<<(ostream& os, const User& user)
         {

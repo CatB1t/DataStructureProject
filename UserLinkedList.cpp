@@ -28,15 +28,16 @@ void UserLinkedList::insertAtTail(User data) {
     length++;
 
 }
-bool UserLinkedList::search(string data) {
+
+User* UserLinkedList::search(string data) {
     Node* current = head;
     while (current != NULL)
     {
-        if (current->info.getusername() == data)
-            return true;
+        if (current->info.getUsername() == data)
+            break;
         current = current->next;
     }
-    return false;
+    return &current->info;
 }
 
 void UserLinkedList::printList() {
