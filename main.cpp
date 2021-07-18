@@ -6,8 +6,8 @@ using namespace std;
 
 int main()
 {
-//	MenuManager menuManager;
-//	menuManager.Run();
     UserManager user;
+	MenuManager menuManager;
+	menuManager.Run();
     return 0;
 }

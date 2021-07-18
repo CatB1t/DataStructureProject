@@ -4,6 +4,7 @@
 #include "MenuUtil.h"
 #include "UserMenu.h"
 #include "User.h"
+#include "UserManager.h"
 
 void MainMenu::Show()
 {
@@ -27,7 +28,8 @@ bool MainMenu::Handle()
 
 void MainMenu::Login() {
     MenuUtil::Print("Enter your name: ");
-    User* currentUser = new User(MenuUtil::GetValidStringInput(), "no", "nono");
+    //User* currentUser = new User(MenuUtil::GetValidStringInput(), "no", "nono");
+    User* currentUser = UserManager::UserManager_Instance->Login(MenuUtil::GetValidStringInput());
     // If valid login, Run user menu
     MenuManager::MenuManager_Instance->ExecuteMenu(new UserMenu(currentUser));
 }

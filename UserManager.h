@@ -10,13 +10,15 @@
 #include <fstream>
 #include <string>
 #include "UserLinkedList.h"
+
 class UserManager {
 private:
-    ifstream nameFileout;
-    string user_info;
-    UserLinkedList UserList;
+    UserLinkedList _userList;
+public:
+    static UserManager* UserManager_Instance;
 public:
     UserManager();
+    User* Login(const std::string& name);
 };
 
 
