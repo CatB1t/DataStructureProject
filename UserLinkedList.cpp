@@ -55,14 +55,16 @@ void UserLinkedList::printList() {
 
 }
 
-UserLinkedList UserLinkedList::TraverseLinkedList(User& user)
+UserLinkedList UserLinkedList::GetRecommendedUsers(User& user)
 {
+    int count = 0;
     Node* temp;
     temp = head;
 
     UserLinkedList _tempList;
 
-    while (temp!= nullptr){
+    while (temp!= nullptr && count < 5)
+    {
         if(user.IsAFriend(temp->info) || user == temp->info)
         {
             temp=temp->next;
@@ -71,6 +73,7 @@ UserLinkedList UserLinkedList::TraverseLinkedList(User& user)
         else
         {
             _tempList.insertAtHead(temp->info);
+            count++;
         }
 
         temp=temp->next;

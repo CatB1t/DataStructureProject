@@ -31,7 +31,7 @@ public:
     void insertAtTail(User data);
     User*  search(const std::string& username);
     void printList();
-    UserLinkedList TraverseLinkedList(User& user);
+    UserLinkedList GetRecommendedUsers(User& user);
 };
 
 

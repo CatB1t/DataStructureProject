@@ -26,7 +26,7 @@ public:
 
     UserLinkedList GetUserRecommendation(User& user)
     {
-       return _userList.TraverseLinkedList(user);
+       return _userList.GetRecommendedUsers(user);
     }
 };
 
