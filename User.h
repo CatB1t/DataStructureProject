@@ -33,10 +33,9 @@ class User
 
         friend ostream& operator<<(ostream& os, const User& user)
         {
-            os << "Fullname: " << user.fullname << endl
+            os << "\nFullname: " << user.fullname << endl
             << "Username: " << user.username << endl
             << "Email: " << user.email << endl;
-
             return os;
         }
 
