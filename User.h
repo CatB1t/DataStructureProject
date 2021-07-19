@@ -29,6 +29,7 @@ class User
         bool RemoveFriend(User& user);
         void ListFriends();
         bool IsAFriend(User& user);
+        bool operator==(const User& user);
 
         friend ostream& operator<<(ostream& os, const User& user)
         {

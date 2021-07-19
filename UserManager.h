@@ -21,6 +21,13 @@ public:
     UserManager();
     User* Login(const std::string& name);
     User* Search(const std::string& name);
+
+
+
+    UserLinkedList GetUserRecommendation(User& user)
+    {
+       return _userList.TraverseLinkedList(user);
+    }
 };
 
 

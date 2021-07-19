@@ -50,26 +50,17 @@ void UserMenu::ListAllFriends() {
 void UserMenu::SearchByUsername() {
     MenuUtil::Print("Enter username:\n");
     User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
-
     if(!user)
     {
         MenuUtil::Print("Not a valid user.\n");
         return;
     }
-
-    if(_currentUser->IsAFriend(*user))
-        MenuUtil::Print(user->toString());
-    else
-        MenuUtil::Print("This user is not in your friend list.\n");
+    MenuUtil::Print(user->toString());
 }
 
 void UserMenu::AddFriend() {
     MenuUtil::Print("Enter username:\n");
     User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
-
-    if(user == _currentUser)
-        MenuUtil::Print("You can't add yourself.\n");
-
     if(!user)
     {
         MenuUtil::Print("Not a valid user.\n");
@@ -88,64 +79,18 @@ void UserMenu::AddFriend() {
 void UserMenu::RemoveFriend() {
     MenuUtil::Print("Enter username:\n");
     User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
-
     if(!user)
     {
         MenuUtil::Print("Not a valid user.\n");
         return;
     }
-
-    if(!_currentUser->IsAFriend(*user))
-    {
-        MenuUtil::Print("This user is not a friend.\n");
-        return;
-    }
-
-    _currentUser->RemoveFriend(*user);
     MenuUtil::Print("Friend removed successfully.\n");
+    _currentUser->RemoveFriend(*user);
 }
 
 
 void UserMenu::ShowPeopleYouMayKnow()
 {
-    bool flag=false;
-    MenuUtil::Print("Recommended Users:\n");
-    ifstream nameFileout;
-    nameFileout.open("../all-users.in");
-    while(!nameFileout.eof())
-    {
-        string userName;
-        string name;
-        string email;
-        nameFileout >> userName;
-        userName.erase(userName.end() - 1);
-        getline(nameFileout, name, ',');
-        name.erase(name.begin());
-        nameFileout >> email;
-        User* user=UserManager::UserManager_Instance->Search(userName);
-        if(user->IsAFriend(*_currentUser)||_currentUser->IsAFriend(*user))
-        {
-            while(!nameFileout.eof())
-            {
-                nameFileout >> userName;
-                userName.erase(userName.end() - 1);
-                getline(nameFileout, name, ',');
-                name.erase(name.begin());
-                nameFileout >> email;
-                User* user2=UserManager::UserManager_Instance->Search(userName);
-                if(user2->IsAFriend(*user)||user->IsAFriend(*user2)&&!user2->IsAFriend(*_currentUser)&&userName!=_currentUser->getUsername())
-                {
-                    flag=true;
-                    cout<<userName<<","<<name<<endl;
-                }
-            }
-            if(flag==false)
-            {
-                MenuUtil::Print("None\n");
-            }
-        }
-
-    }
-    nameFileout.close();
-
+    MenuUtil::Print("People you may know\n");
+    UserManager::UserManager_Instance->GetUserRecommendation(*_currentUser).printList();
 }

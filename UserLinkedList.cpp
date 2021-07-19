@@ -54,3 +54,29 @@ void UserLinkedList::printList() {
     }
 
 }
+
+UserLinkedList UserLinkedList::TraverseLinkedList(User& user)
+{
+    Node* temp;
+    temp = head;
+
+    UserLinkedList _tempList;
+
+    while (temp!= nullptr){
+        if(user.IsAFriend(temp->info) || user == temp->info)
+        {
+            temp=temp->next;
+            continue;
+        }
+        else
+        {
+            _tempList.insertAtHead(temp->info);
+        }
+
+        temp=temp->next;
+    }
+
+    return _tempList;
+}
+
+

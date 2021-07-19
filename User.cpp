@@ -33,3 +33,11 @@ bool User::IsAFriend(User& user)
 {
     return friendsList->find(user.username);
 }
+
+bool User::operator==(const User& user)
+{
+    if((this->username == user.username) && (this->email == user.email) && (this->fullname == user.fullname))
+        return true;
+    else
+        return false;
+}

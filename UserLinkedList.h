@@ -20,8 +20,9 @@ class UserLinkedList {
         }
     };
 
+
 private:
-    Node *head = nullptr, *tail = nullptr;
+    Node* head = nullptr, *tail = nullptr;
     int length;
 
 public:
@@ -30,6 +31,7 @@ public:
     void insertAtTail(User data);
     User*  search(string username);
     void printList();
+    UserLinkedList TraverseLinkedList(User& user);
 };
 
 
