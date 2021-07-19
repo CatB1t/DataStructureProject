@@ -88,7 +88,48 @@ void UserMenu::RemoveFriend() {
     _currentUser->RemoveFriend(*user);
 }
 
-void UserMenu::ShowPeopleYouMayKnow() {
+
+void UserMenu::ShowPeopleYouMayKnow()
+{
+    bool flag=false;
+    MenuUtil::Print("Recommended Users:\n");
+    ifstream nameFileout;
+    nameFileout.open("../all-users.in");
+    while(!nameFileout.eof())
+    {
+        string userName;
+        string name;
+        string email;
+        nameFileout >> userName;
+        userName.erase(userName.end() - 1);
+        getline(nameFileout, name, ',');
+        name.erase(name.begin());
+        nameFileout >> email;
+        User* user=UserManager::UserManager_Instance->Search(userName);
+        if(user->IsAFriend(*_currentUser)||_currentUser->IsAFriend(*user))
+        {
+            while(!nameFileout.eof())
+            {
+                nameFileout >> userName;
+                userName.erase(userName.end() - 1);
+                getline(nameFileout, name, ',');
+                name.erase(name.begin());
+                nameFileout >> email;
+                User* user2=UserManager::UserManager_Instance->Search(userName);
+                if(user2->IsAFriend(*user)||user->IsAFriend(*user2)&&!user2->IsAFriend(*_currentUser)&&userName!=_currentUser->getUsername())
+                {
+                    flag=true;
+                    cout<<userName<<","<<name<<endl;
+                }
+            }
+            if(flag==false)
+            {
+                MenuUtil::Print("None\n");
+
+            }
+        }
+
+    }
+    nameFileout.close();
 
 }
-
