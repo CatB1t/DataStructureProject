@@ -47,7 +47,8 @@ void UserManager::ReadInputForRelations()
         string tmpFirstUser,tmpSecondUser;
 
         tmp >> tmpFirstUser;
-        getline(tmp, tmpSecondUser, ',');
+        tmpFirstUser.erase(tmpFirstUser.end() - 1);
+        tmp >> tmpSecondUser;
 
         User* firstUser = _userList.search(tmpFirstUser);
         User* secondUser = _userList.search(tmpSecondUser);

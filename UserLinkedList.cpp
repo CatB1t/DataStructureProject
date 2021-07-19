@@ -29,7 +29,7 @@ void UserLinkedList::insertAtTail(User data) {
 
 }
 
-User* UserLinkedList::search(string data) {
+User* UserLinkedList::search(const std::string& data) {
     Node* current = head;
     while (current != NULL)
     {

@@ -29,7 +29,7 @@ public:
     UserLinkedList();
     void insertAtHead(User data);
     void insertAtTail(User data);
-    User*  search(string username);
+    User*  search(const std::string& username);
     void printList();
     UserLinkedList TraverseLinkedList(User& user);
 };
