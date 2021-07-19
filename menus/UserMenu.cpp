@@ -50,17 +50,26 @@ void UserMenu::ListAllFriends() {
 void UserMenu::SearchByUsername() {
     MenuUtil::Print("Enter username:\n");
     User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
+
     if(!user)
     {
         MenuUtil::Print("Not a valid user.\n");
         return;
     }
-    MenuUtil::Print(user->toString());
+
+    if(_currentUser->IsAFriend(*user))
+        MenuUtil::Print(user->toString());
+    else
+        MenuUtil::Print("This user is not in your friend list.\n");
 }
 
 void UserMenu::AddFriend() {
     MenuUtil::Print("Enter username:\n");
     User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
+
+    if(user == _currentUser)
+        MenuUtil::Print("You can't add yourself.\n");
+
     if(!user)
     {
         MenuUtil::Print("Not a valid user.\n");
@@ -79,13 +88,21 @@ void UserMenu::AddFriend() {
 void UserMenu::RemoveFriend() {
     MenuUtil::Print("Enter username:\n");
     User* user = UserManager::UserManager_Instance->Search(MenuUtil::GetValidStringInput());
+
     if(!user)
     {
         MenuUtil::Print("Not a valid user.\n");
         return;
     }
-    MenuUtil::Print("Friend removed successfully.\n");
+
+    if(!_currentUser->IsAFriend(*user))
+    {
+        MenuUtil::Print("This user is not a friend.\n");
+        return;
+    }
+
     _currentUser->RemoveFriend(*user);
+    MenuUtil::Print("Friend removed successfully.\n");
 }
 
 
@@ -125,7 +142,6 @@ void UserMenu::ShowPeopleYouMayKnow()
             if(flag==false)
             {
                 MenuUtil::Print("None\n");
-
             }
         }
 
